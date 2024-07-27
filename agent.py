@@ -14,7 +14,7 @@ from langchain_community.document_loaders import TextLoader
 
 #prompt, resume etc job summary: {job_summary} directory
 docdir='rag_docs/'
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
 
 
 
