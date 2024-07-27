@@ -73,9 +73,9 @@ def retrieve_knowledge(query, table):
   relevant_knowledge=table.loc[(table['relevant score']>0.5)]['content']
   text_list=[]
   i=1
-  for t in relevant_knowledge.apply(lambda x: x.replace("\ufeff", "")):
+  for t in relevant_knowledge.apply(lambda x: x.replace("\ufeff", "")) and i<=3:
     print(t)
-    text_list.append("KNOWLEDGE "+str(i)+": "+t)
+    text_list.append("KNOWLEDGE "+str(i)+": "+t+" ")
     i=i+1
 
   return "".join(text_list)
