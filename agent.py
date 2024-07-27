@@ -113,7 +113,7 @@ with body:
             job_summary= update_job_summary(job_description)
    
 #Main chat
-    st.subheader("Interview History.",divider='rainbow')
+    st.subheader("Start.",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)
 
@@ -125,7 +125,7 @@ if "messages" not in st.session_state:
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-if prompt := st.chat_input("How could I help you?"):
+if prompt := st.chat_input("Good day, nice to meet you!"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
