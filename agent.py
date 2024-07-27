@@ -91,9 +91,6 @@ margin_r,body,margin_l = st.columns([0.4, 3, 0.4])
 
 with body:
     st.header("Job Interviewee AI Agent",divider='rainbow')
-    if "messages" not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "Good day! I am Digital Twin of Ren Hwai. I am here for job interview."}]
-        st.session_state.table=update_knowledge()
 
     col1, col2, col3 = st.columns([1.3 ,0.2, 1])
 
@@ -118,8 +115,11 @@ with body:
 #Main chat
     st.subheader("Start interview.",divider='rainbow')
     if job_summary!='':
-        st.write(job_summary)   
-
+        st.write(job_summary)
+           
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "Good day! I am Digital Twin of Ren Hwai. I am here for job interview."}]
+    st.session_state.table=update_knowledge()
 
 # Display chat messages from history on app rerun
     for message in st.session_state.messages:
