@@ -128,17 +128,13 @@ with body:
     # React to user input        
     if prompt := st.chat_input("Let's start!"):
         # Display user message in chat message container
-        st.chat_message("user").markdown(prompt)
+        st.chat_message("user").st.markdown(prompt)
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
-        passage=retrieve_knowledge(prompt, st.session_state.table)
-        response=gemini_chat(make_prompt(prompt, job_summary, passage))
         
-        # Display assistant response in chat message container
+
         with st.chat_message("assistant"):
-            st.markdown(response)
-        # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": response})
-            
-            
+            passage=retrieve_knowledge(prompt, st.session_state.table)
+            response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
+            st.session_state.messages.append({"role": "assistant", "content": response})
        
