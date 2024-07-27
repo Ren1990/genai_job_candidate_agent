@@ -98,22 +98,24 @@ with body:
     col1, col2, col3 = st.columns([1.3 ,0.2, 1])
 
     with col1:
-        st.title("First Step")
+        st.title("About Myself...")
+ 
+        
+    with col3:
+        st.title("First, do you want to test with a job description")
         job_summary=''
         job_description=st.text_area(
-        "Before begin the interview, please provide the job description to generate summary",
+        "You can paste a job description here.",
         label_visibility="visible",
         height=250
         )
         if job_description!='':
             job_summary= update_job_summary(job_description)
-        if job_summary!='':
-            st.write(job_summary)        
-        
-    with col3:
-        st.image("assets/image1.png", width=360)
+   
 #Main chat
     st.subheader("Start interview.",divider='rainbow') #,divider='rainbow'
+    if job_summary!='':
+        st.write(job_summary)   
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
