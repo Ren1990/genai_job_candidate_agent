@@ -127,8 +127,6 @@ with body:
     
     # React to user input        
     if prompt := st.chat_input("Let's start!"):
-        # Display user message in chat message container
-        st.chat_message("user").st.markdown(prompt)
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
         
