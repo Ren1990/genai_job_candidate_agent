@@ -89,6 +89,51 @@ def retrieve_knowledge(query, table):
 st.set_page_config(page_title="Job Interviewee AI Agent", page_icon="🏠", layout="wide") 
 margin_r,body,margin_l = st.columns([0.4, 3, 0.4])
 
+st.markdown("""
+    <style>
+    .fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    .text-input {
+        flex: 1;
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .btn {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-icon {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABTUlEQVQ4T9WTTUoDQRSGn5mYhmDoo4QXgiIo7+BgsiBoeAI8gCH8Av4Cc4gIIZIggJJ4EUtLA+4QvYBxeYi5cmzPvEGJs7A/N2ds7s7DvdnHg7hKp3uDgWGbAot9awNQH4l04aGM2vQBtRNmGEPLQbGFynKsZgmS5cAql4lPjDCTocTXQCTPxOXQDbAkcCJoDqx5ukEu4BlwnfNN3YoUeIlG1cZK3wqCpQrsQRsoxfQZPIvZ8qP2HIn5RbmCB99CAUyIxSAI1J/A5Mj3A9rO4hncPFTMLBqkD35DCPFEYgj+ndlfPQyAizIg6C1AqsFlMxxQ4VAV8Hs1qvDJW+dQtR1pnbYUyN5kQddcfWSu+g3O0mWoBD+Of4EFZyTSvhq8uZPtYFiv/L4isQtmcivgH6Sfhs4wKxDHYNe95QTmSAAAAAElFTkSuQmCC') no-repeat center center;
+        background-size: contain;
+        width: 24px;
+        height 24px;
+        border: none;
+        cursor: pointer;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 with body:
     st.header("Job Interviewee AI Agent",divider='rainbow')
     if "messages" not in st.session_state:
