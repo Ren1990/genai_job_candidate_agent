@@ -14,7 +14,7 @@ from langchain_community.document_loaders import TextLoader
 
 #prompt, resume etc job summary: {job_summary} directory
 docdir='rag_docs/'
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 
 
 
@@ -70,7 +70,7 @@ def retrieve_knowledge(query, table):
                                         content=query,
                                         task_type="retrieval_query")
   table['relevant score'] = np.dot(np.stack(table['embedding']), query_embedding["embedding"])
-  relevant_knowledge=table.loc[(table['relevant score']>0.5)].sort_values('relevant score',ascending=False).head(3)
+  relevant_knowledge=table.loc[(table['relevant score']>0.5)].sort_values('relevant score',ascending=False).head(5)
   text_list=[]
   i=1
   for t in relevant_knowledge['content'].apply(lambda x: x.replace("\ufeff", "")):
