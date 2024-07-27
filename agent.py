@@ -118,7 +118,6 @@ if prompt := st.chat_input("How could I help you?"):
 
     with st.chat_message("assistant"):
         passage=retrieve_knowledge(prompt, st.session_state.table)
-        st.write(passage)
         response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
     st.session_state.messages.append(
         {"role": "assistant", "content": response})
