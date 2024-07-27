@@ -136,5 +136,5 @@ with body:
         with st.chat_message("assistant"):
             passage=retrieve_knowledge(prompt, st.session_state.table)
             response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            #st.session_state.messages.append({"role": "assistant", "content": response})
        
