@@ -116,9 +116,9 @@ with body:
     st.subheader("Start interview.",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)
-           
+
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "Good day! I am Digital Twin of Ren Hwai. I am here for job interview."}]
+    st.session_state.messages = []
     st.session_state.table=update_knowledge()
 
 # Display chat messages from history on app rerun
