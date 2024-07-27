@@ -99,7 +99,7 @@ with body:
 
     with col1:
         st.title("About Myself...")
-        st.image("assets/image.png", width=360)
+        st.image("assets/image1.png", width=360)
         st.write('Name: Kong Ren Hwai')
 
  
