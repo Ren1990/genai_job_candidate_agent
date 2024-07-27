@@ -70,14 +70,12 @@ def retrieve_knowledge(query, table):
                                         content=query,
                                         task_type="retrieval_query")
   table['relevant score'] = np.dot(np.stack(table['embedding']), query_embedding["embedding"])
-  relevant_knowledge=table.loc[(table['relevant score']>0.5)]['content']
+  relevant_knowledge=table.loc[(table['relevant score']>0.5)].sort_values('relevant score',ascending=False).head(3)
   text_list=[]
   i=1
-  if i<=3:
-    for t in relevant_knowledge.apply(lambda x: x.replace("\ufeff", "")):
-        print(t)
-        text_list.append("KNOWLEDGE "+str(i)+": "+t+" ")
-        i=i+1
+  for t in relevant_knowledge['content'].apply(lambda x: x.replace("\ufeff", "")):
+    text_list.append("KNOWLEDGE "+str(i)+": "+t+" ")
+    i=i+1
 
   return "".join(text_list)
 
