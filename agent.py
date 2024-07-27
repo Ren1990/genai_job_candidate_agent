@@ -95,25 +95,25 @@ with body:
     col1, col2, col3 = st.columns([1.3 ,0.2, 1])
 
     with col1:
-        st.title("About Myself...")
+        st.subheader("About Myself...")
         st.image("assets/image1.png", width=360)
         st.write('Name: Kong Ren Hwai')
 
  
         
     with col3:
-        st.title("Your Job Description")
+        st.subheader("Job Description")
         job_summary=''
         job_description=st.text_area(
         "You can paste a job description here.",
         label_visibility="visible",
-        height=250
+        height=200
         )
         if job_description!='':
             job_summary= update_job_summary(job_description)
    
 #Main chat
-    st.subheader("Start interview.",divider='rainbow')
+    st.subheader("Start interview session.",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)
 
