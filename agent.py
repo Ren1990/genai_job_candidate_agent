@@ -171,6 +171,7 @@ with body:
             st.markdown(message["content"])
 
     if prompt := st.chat_input("How could I help you?"):
+        st.markdown('<div class="fixed-bottom">', unsafe_allow_html=True)
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
         # Display user message in chat message container
