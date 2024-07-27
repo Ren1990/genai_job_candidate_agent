@@ -99,10 +99,13 @@ with body:
 
     with col1:
         st.title("About Myself...")
+        st.image("src/portrait.jpeg", width=360)
+        st.write('Name: Kong Ren Hwai')
+
  
         
     with col3:
-        st.title("First, do you want to test with a job description")
+        st.title("Your Job Description")
         job_summary=''
         job_description=st.text_area(
         "You can paste a job description here.",
