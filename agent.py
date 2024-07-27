@@ -86,47 +86,47 @@ def retrieve_knowledge(query, table):
 
 
 #streamlit layout
-tab1, tab2 = st.tabs(["Chatbot", "Relevant Knowledge"])
+st.set_page_config(page_title="Main Page", page_icon="🏠", layout="wide",initial_sidebar_state="collapsed") 
+margin_r,body,margin_l = st.columns([0.4, 3, 0.4])
 
-with tab1:
-    st.title("Job Candidate Agent: Ren Hwai")
+with body:
+    st.header("Good day, please have a job interview with my job_applicant_AI",divider='rainbow')
     if "messages" not in st.session_state:
         st.session_state.messages = []
         st.session_state.table=update_knowledge()
 
-#side bar
-with st.sidebar:
-    job_summary=''
-    job_description=st.text_area(
-    "Before begin the interview, please provide the job description to generate summary",
-    label_visibility="visible",
-    height=250
-    )
-    if job_description!='':
-        job_summary= update_job_summary(job_description)
-    if job_summary!='':
-        st.write(job_summary)
+    col1, col2, col3 = st.columns([1.3 ,0.2, 1])
 
+    with col1:
+        st.title("First Step")
+        job_summary=''
+        job_description=st.text_area(
+        "Before begin the interview, please provide the job description to generate summary",
+        label_visibility="visible",
+        height=250
+        )
+        if job_description!='':
+            job_summary= update_job_summary(job_description)
+        if job_summary!='':
+            st.write(job_summary)        
+        
+    with col3:
+        st.image("assets/image1.png", width=360)
 #Main chat
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-if prompt := st.chat_input("How could I help you?"):
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
+    st.subheader("Start interview.",divider='rainbow') #,divider='rainbow'
 
-    with st.chat_message("assistant"):
-        passage=retrieve_knowledge(prompt, st.session_state.table)
-        response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
-    st.session_state.messages.append(
-        {"role": "assistant", "content": response})
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+    if prompt := st.chat_input("How could I help you?"):
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        # Display user message in chat message container
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
-
-
-
-
-with tab2:
-    st.table(st.session_state.table[['content','relevant score']].sort_values('relevant score',ascending=False).head(5))
+        with st.chat_message("assistant"):
+            passage=retrieve_knowledge(prompt, st.session_state.table)
+            response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
+        st.session_state.messages.append(
+            {"role": "assistant", "content": response})
