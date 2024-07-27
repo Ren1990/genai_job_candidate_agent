@@ -116,14 +116,15 @@ with body:
             job_summary= update_job_summary(job_description)
    
 #Main chat
-    st.subheader("Start interview.",divider='rainbow') #,divider='rainbow'
+    st.subheader("Start interview.",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)   
 
-    # Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+
+# Display chat messages from history on app rerun
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 if prompt := st.chat_input("How could I help you?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
