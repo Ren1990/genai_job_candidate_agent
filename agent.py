@@ -124,16 +124,16 @@ with body:
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-            
-    if prompt := st.chat_input("Let's start!"):
+    if prompt := st.chat_input("How could I help you?"):
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
         # Display user message in chat message container
         with st.chat_message("user"):
             st.markdown(prompt)
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        
 
         with st.chat_message("assistant"):
             passage=retrieve_knowledge(prompt, st.session_state.table)
             response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
+        st.session_state.messages.append(
+            {"role": "assistant", "content": response})
        
