@@ -132,9 +132,9 @@ with body:
             st.markdown(prompt)
 
         passage=retrieve_knowledge(prompt, st.session_state.table)
-        response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
 
         with st.chat_message("assistant"):
+            response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
             st.session_state.messages.append(
                 {"role": "assistant", "content": response})
        
