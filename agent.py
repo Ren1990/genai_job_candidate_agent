@@ -98,6 +98,10 @@ with body:
         st.subheader("About Myself...")
         st.image("assets/image1.png", width=360)
         st.write('Name: Kong Ren Hwai')
+        Linkedin="https://www.linkedin.com/in/renhwai-kong/"
+        st.write("My Linkedin(%s)" % Linkedin)
+        Github="https://github.com/Ren1990/house_price_reg_model"
+        st.write("My Github(%s)" % Github)
 
  
         
@@ -113,7 +117,7 @@ with body:
             job_summary= update_job_summary(job_description)
    
 #Main chat
-    st.subheader("Start interview session.",divider='rainbow')
+    st.subheader("Interview History.",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)
 
