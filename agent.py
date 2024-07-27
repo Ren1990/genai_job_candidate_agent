@@ -16,7 +16,7 @@ from langchain_community.document_loaders import TextLoader
 docdir='rag_docs/'
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
 rank_threshold=0.5
-ranking=5
+ranking=2
 
 
 
@@ -129,4 +129,4 @@ if prompt := st.chat_input("How could I help you?"):
 
 
 with tab2:
-    st.table(st.session_state.table[['content','relevant score']].sort_values('relevant score',ascending=False).head(ranking))
+    st.table(st.session_state.table[['content','relevant score']].sort_values('relevant score',ascending=False).head(5))
