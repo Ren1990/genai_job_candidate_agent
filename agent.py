@@ -70,14 +70,22 @@ def retrieve_knowledge(query, table):
                                         content=query,
                                         task_type="retrieval_query")
   table['relevant score'] = np.dot(np.stack(table['embedding']), query_embedding["embedding"])
-  return table['content'].iloc[np.argmax(table['relevant score'])] # Return text from index with max value
+  relevant_knowledge=table.loc[(table['relevant score']>0.35)]['content']
+  text_list=[]
+  i=1
+  for t in relevant_knowledge.apply(lambda x: x.replace("\ufeff", "")):
+    print(t)
+    text_list.append("KNOWLEDGE "+str(i)+": "+t)
+    i=i+1
+
+  return "".join(text_list)
 
 
 
 
 
 #streamlit layout
-tab1, tab2 = st.tabs(["Chat", "RAG Search Result"])
+tab1, tab2 = st.tabs(["Chatbot", "Relevant Knowledge"])
 
 with tab1:
     st.title("Job Candidate Agent: Ren Hwai")
