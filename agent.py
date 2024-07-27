@@ -86,13 +86,13 @@ def retrieve_knowledge(query, table):
 
 
 #streamlit layout
-st.set_page_config(page_title="Main Page", page_icon="🏠", layout="wide",initial_sidebar_state="collapsed") 
+st.set_page_config(page_title="Job Interviewee AI Agent", page_icon="🏠", layout="wide") 
 margin_r,body,margin_l = st.columns([0.4, 3, 0.4])
 
 with body:
-    st.header("Good day, please have a job interview with my job_applicant_AI",divider='rainbow')
+    st.header("Job Interviewee AI Agent",divider='rainbow')
     if "messages" not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "Good day! I am Digital Twin AI of Kong Ren Hwai. I am here for job interview."}]
+        st.session_state["messages"] = [{"role": "assistant", "content": "Good day! I am Digital Twin of Ren Hwai. I am here for job interview."}]
         st.session_state.table=update_knowledge()
 
     col1, col2, col3 = st.columns([1.3 ,0.2, 1])
@@ -124,14 +124,14 @@ with body:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
     if prompt := st.chat_input("Let's start!"):
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
         # Display user message in chat message container
         with st.chat_message("user"):
             st.markdown(prompt)
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        
 
         with st.chat_message("assistant"):
             passage=retrieve_knowledge(prompt, st.session_state.table)
             response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
-        st.session_state.messages.append(
-            {"role": "assistant", "content": response})
+       
