@@ -99,7 +99,7 @@ with body:
         st.image("assets/image1.png", width=360)
         st.write('Name: Kong Ren Hwai')
         Linkedin="https://www.linkedin.com/in/renhwai-kong/"
-        st.write("My Linkedin(%s)" % Linkedin)
+        st.markdown("My Linkedin(%s)" % Linkedin)
         Github="https://github.com/Ren1990/house_price_reg_model"
         st.write("My Github(%s)" % Github)
 
