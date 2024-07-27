@@ -96,12 +96,10 @@ with body:
 
     with col1:
         st.subheader("About Myself...")
-        st.image("assets/image1.png", width=360)
-        st.write('Hi! This is me, Ren Hwai, chilling in Iceland. Happy family trip during my career break! After working in top US semicond company for 8 years as Senior Technology Development Process Engineer & Smart Manufacturing Analyst (Eng. IV), I take a long break to sharpen my Python skill in data science & analysis, and study for CFA (Chartered Finance Analyst) to look for new industry exposure and work opportunity.')
         st.write("[Linkedin](https://www.linkedin.com/in/renhwai-kong/)")
         st.write("[Github](https://github.com/Ren1990/house_price_reg_model)")
-
- 
+        st.image("assets/image1.png", width=360)
+        st.write('Hi! This is me, Ren Hwai, chilling in Iceland. Happy family trip during my career break! After working in top US semicond company for 8 years as Senior Technology Development Process Engineer & Smart Manufacturing Analyst (Eng. IV), I take a long break to sharpen my Python skill in data science & analysis, and study for CFA (Chartered Finance Analyst) to look for new industry exposure and work opportunity.')
         
     with col3:
         st.subheader("Job Description")
