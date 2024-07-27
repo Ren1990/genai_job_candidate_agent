@@ -120,18 +120,25 @@ with body:
     if job_summary!='':
         st.write(job_summary)   
 
+    # Display chat messages from history on app rerun
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+    
+    # React to user input        
     if prompt := st.chat_input("Let's start!"):
         # Display user message in chat message container
-        with st.chat_message("user"):
-            st.markdown(prompt)
+        st.chat_message("user").markdown(prompt)
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
+        passage=retrieve_knowledge(prompt, st.session_state.table)
+        response=gemini_chat(make_prompt(prompt, job_summary, passage))
         
-
+        # Display assistant response in chat message container
         with st.chat_message("assistant"):
-            passage=retrieve_knowledge(prompt, st.session_state.table)
-            response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
+            st.markdown(response)
+        # Add assistant response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": response})
+            
+            
        
