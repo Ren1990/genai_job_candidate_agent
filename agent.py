@@ -96,7 +96,7 @@ with body:
     col1, col2, col3 = st.columns([1.3 ,0.2, 1])
 
     with col1:
-        st.subheader("About Myself...")
+        st.subheader("About Myself")
         st.image("assets/image1.jpg", width=360)
         st.write('Hi! This is me, Ren Hwai, chilling in Iceland. Happy family trip during my career break!')
         st.write("My [Linkedin](https://www.linkedin.com/in/renhwai-kong/) Profile")
@@ -116,7 +116,7 @@ with body:
             job_summary= update_job_summary(job_description)
    
 #Main chat
-    st.subheader("Start.",divider='rainbow')
+    st.subheader("Begin interview here...",divider='rainbow')
     if job_summary!='':
         st.write(job_summary)
 
