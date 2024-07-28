@@ -6,3 +6,5 @@ the Retrieval Augmented Generation (RAG) framework and use the relevant informat
 effectively.
 
 Streamlit demo web link: https://renhwaichatbot.streamlit.app/
+
+The resume and sample interview answers in the RAG folder is the key component to create this personalized chatbot. The tilte of the document is the interview question, and the content is my interview answer. If you wish to duplicate this app with your own data, you can recreate the RAG documents, then tune with the prompt template in the code for better result.
