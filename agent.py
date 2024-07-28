@@ -41,7 +41,8 @@ def make_prompt(prompt, job_summary, passage):
   return prompt
 
 def gemini_chat(full_prompt):
-    model = genai.GenerativeModel('gemini-1.0-pro')
+    #model = genai.GenerativeModel('gemini-1.0-pro')
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
     answer = model.generate_content(full_prompt)
     for chunk in answer.text:
         yield chunk
