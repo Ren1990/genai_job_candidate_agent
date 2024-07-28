@@ -98,7 +98,7 @@ with body:
 
     with col1:
         st.subheader("About Myself")
-        st.image("assets/image1.jpg", width=360)
+        st.image("assets/image1.jpg", width=400)
         st.write('Hi! This is me, Ren Hwai, chilling in Iceland. Happy family trip during my career break!')
         st.write("My [Linkedin](https://www.linkedin.com/in/renhwai-kong/) Profile")
         st.write("Visit my [Github](https://github.com/Ren1990?tab=repositories) projects")
@@ -111,7 +111,7 @@ with body:
         job_description=st.text_area(
         "You can paste a job description here.",
         label_visibility="visible",
-        height=400
+        height=600
         )
         if job_description!='':
             job_summary= update_job_summary(job_description)
