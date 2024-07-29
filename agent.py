@@ -98,7 +98,7 @@ def retrieve_knowledge(query, table):
 
 
 #streamlit layout
-st.set_page_config(page_title="Job Interviewee AI Agent", page_icon="🏠", layout="wide") 
+st.set_page_config(page_title="Job Interviewee AI Agent", layout="wide") 
 margin_r,body,margin_l = st.columns([0.4, 3, 0.4])
 
 with body:
@@ -113,7 +113,7 @@ with body:
         st.write("My [Linkedin](https://www.linkedin.com/in/renhwai-kong/) Profile")
         st.write("Visit my [Github](https://github.com/Ren1990?tab=repositories) projects")
         st.write("Take a look on [Tableau](https://public.tableau.com/app/profile/kyloren.kong/viz/Demo_2024InvestmentPortfolio/DBPortfolio) viz")        
-        st.write('After working in top US semicond company for 8 years as Sr. Business Analyst and Process Development Engineer, I took a long break to sharpen my Python skill in data science & analysis, and study for CFA (Chartered Finance Analyst) to look for new industry exposure and work opportunity.')
+        st.write('After working in top US semicond company for 8 years as Sr. Business Analyst and Process Development Engineer, I took a break to sharpen my Python skill in data science & analysis, and study for CFA (Chartered Finance Analyst) to look for new industry exposure and work opportunity.')
                  
     with col3:
         st.subheader("Job Description")
