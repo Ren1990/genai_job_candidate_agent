@@ -52,7 +52,6 @@ JOB DESCRIPTION: {job_summary}
   return prompt
 
 def gemini_chat(full_prompt):
-    #model = genai.GenerativeModel('gemini-1.0-pro')
     model = genai.GenerativeModel('gemini-1.5-flash-latest')
     answer = model.generate_content(full_prompt)
     for chunk in answer.text:
@@ -133,7 +132,7 @@ with body:
         st.write(job_summary)
 
 if "messages" not in st.session_state:
-    st.session_state.table=update_knowledge()
+    #st.session_state.table=update_knowledge()
     st.session_state.messages = []
     
 
