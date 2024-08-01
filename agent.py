@@ -133,7 +133,7 @@ with body:
         st.write(job_summary)
 
 if "messages" not in st.session_state:
-    #st.session_state.table=update_knowledge()
+    st.session_state.table=update_knowledge()
     st.session_state.messages = []
     
 
