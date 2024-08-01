@@ -79,12 +79,13 @@ def update_knowledge():
             i=i+1
     return table
 
-def retrieve_knowledge(query, table):
+def retrieve_knowledge(query):
+  readparquet=pd.read_parquet('embbed_table.parquet.gzip')
   query_embedding = genai.embed_content(model='models/text-embedding-004',
                                         content=query,
                                         task_type="retrieval_query")
-  table['relevant score'] = np.dot(np.stack(table['embedding']), query_embedding["embedding"])
-  relevant_knowledge=table.loc[(table['relevant score']>rank_threshold)].sort_values('relevant score',ascending=False).head(ranking)
+  readparquet['relevant score'] = np.dot(np.stack(readparquet['embedding']), query_embedding["embedding"])
+  relevant_knowledge=readparquet.loc[(readparquet['relevant score']>rank_threshold)].sort_values('relevant score',ascending=False).head(ranking)
   text_list=[]
   i=1
   for t in relevant_knowledge['content'].apply(lambda x: x.replace("\ufeff", "")):
@@ -132,7 +133,7 @@ with body:
         st.write(job_summary)
 
 if "messages" not in st.session_state:
-    st.session_state.table=update_knowledge()
+    #st.session_state.table=update_knowledge()
     st.session_state.messages = []
     
 
@@ -148,7 +149,7 @@ if prompt := st.chat_input("Good day, nice to meet you!"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    passage=retrieve_knowledge(prompt, st.session_state.table)
+    passage=retrieve_knowledge(prompt)
 
     with st.chat_message("assistant"):
         response=st.write_stream(gemini_chat(make_prompt(prompt, job_summary, passage)))
