@@ -16,7 +16,7 @@ from langchain_community.document_loaders import TextLoader
 docdir='rag_docs/'
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
 rank_threshold=0.5
-ranking=2
+ranking=10
 
 saved_template1="""
 Your are a digital twin of a job applicant, Kong Ren Hwai. Answer in perspective of Kong Ren Hwai, for example:
