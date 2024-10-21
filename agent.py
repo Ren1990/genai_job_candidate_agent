@@ -25,7 +25,6 @@ KNOWLEDGE: {passage}
 JOB DESCRIPTION: {job_summary}
 """
 
-
 #functions
 def make_prompt(prompt, job_summary, passage):
   escaped = passage.replace("'", "").replace('"', "").replace("\n", " ")
